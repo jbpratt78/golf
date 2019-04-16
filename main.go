@@ -113,7 +113,7 @@ func getListenAddr() string {
 	if addr := os.Getenv("LISTEN_ADDR"); addr != "" {
 		return addr
 	}
-	return "127.0.0.1:8000"
+	return ":8000"
 }
 
 func parseTemplate() {

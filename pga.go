@@ -75,6 +75,7 @@ func (pga *PGA) Parse(r io.Reader) (*Leaderboard, error) {
 			After:           p.Thru,
 			Hole:            p.CourseHole,
 			TotalStrokes:    p.TotalStrokes,
+			Rankings:        p.Rankings,
 			Rounds:          rounds,
 		})
 	}
@@ -137,6 +138,10 @@ type PGALeaderboard struct {
 				LastName  string `json:"last_name"`
 				ShortName string `json:"short_name"`
 			} `json:"player_bio"`
+			Rankings struct {
+				CupRank   string `json:"cup_rank"`
+				CupPoints int    `json:"cup_points"`
+			} `json:"rankings"`
 			Rounds []struct {
 				RoundNumber int `json:"round_number"`
 				Strokes     int `json:"strokes"`

@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"flag"
-	"github.com/jacoduplessis/twitterparse"
 	"html/template"
 	"io"
 	"log"
@@ -12,12 +11,19 @@ import (
 	"os"
 	"sort"
 	"time"
+
+	"github.com/jacoduplessis/twitterparse"
 )
 
 type AppError struct {
 	Message string
 	Code    int
 	Error   error
+}
+
+type Ranking struct {
+	CupRank   string `json:"cup_rank"`
+	CupPoints int    `json:"cup_points"`
 }
 
 type Player struct {
@@ -31,6 +37,7 @@ type Player struct {
 	Total           int // par
 	TotalStrokes    int // stroke
 	Rounds          []int
+	Rankings        Ranking
 }
 
 type Leaderboard struct {
